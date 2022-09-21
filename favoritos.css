@@ -1,0 +1,42 @@
+.favoritos{
+    max-height: 80vmax;
+    max-width: 100vw;
+}
+
+.cardcarousel-container{
+    background-image: url("./sources/carouselbckground.jpeg");
+    background-size: cover;
+}
+
+.card{
+    color: white;
+    background: linear-gradient(0deg, #f02f05, #FF0000);
+    border: none;
+    box-shadow: 4px 6px 8px 0 black;
+    transition :all 0.2s ease-out;
+}
+
+.carousel-control-prev,.carousel-control-next{
+    background-color: goldenrod;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.card:hover{
+    transform: scale(1.1);
+    box-shadow: 6px 6px 8px 0 goldenrod;
+}
+   
+.btn{
+    background: #f02f05;
+    color: #e1e1e1;
+}
+
+.card-title{
+ border: 2px solid white ;
+ margin: 0;
+}
+
