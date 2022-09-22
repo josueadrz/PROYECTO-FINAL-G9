@@ -34,7 +34,7 @@ main {
     display: flex;
     justify-content: center;
     backdrop-filter: blur(10px);
-    background-color: rgba(0, 128, 255, 0.5);
+    background-color: rgba(255, 66, 10, 0.5);
 }
 
 .caja__trasera div {
