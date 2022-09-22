@@ -129,3 +129,37 @@ main {
 .formulario__register {
     display: none;
 }
+
+/* modo responsive */
+
+@media screen and (max-width:850px) {
+
+    main {
+        margin-top: 50px;
+    }
+
+    .caja__trasera {
+        max-width: 350px;
+        height: 300px;
+        flex-direction: column;
+        margin: auto;
+    }
+
+    .caja__trasera div {
+        margin: 0px;
+        position: absolute;
+    }
+
+    /* formulario */
+
+    .contenedor__login-register {
+        top: -0;
+        left: -5px;
+        margin: auto;
+    }
+
+    .contenedor__login-register form {
+        position: relative;
+    }
+
+}
