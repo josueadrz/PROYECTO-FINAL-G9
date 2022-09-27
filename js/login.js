@@ -1,4 +1,4 @@
-
+const btnLogin = document.querySelector("#btn-login") //
 
 document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion);
 document.getElementById("btn__registrarse").addEventListener("click", register);
@@ -24,6 +24,7 @@ function anchoPagina() {
         formulario_register.style.display = "none";
         contenedor_login_register.style.left = "0px";
     }
+    
 }
 
 anchoPagina();
@@ -44,6 +45,7 @@ function iniciarSesion() {
         caja_trasera_login.style.display = "none";
     }
 
+
 }
 
 function register() {
@@ -63,5 +65,52 @@ function register() {
         caja_trasera_login.style.opacity = "1";
     }
 
+}
+
+btnLogin.onclick = function (event) {
+    event.preventDefault();
+
+    const inputs = document.querySelectorAll("input");
+
+    inputs.forEach((input) => {
+        console.log(inputs)
+        localStorage.setItem(input.name, input.value)
+    });
+
+login();
 
 }
+
+/* const email = localStorage.getItem("email")
+const password = localStorage.getItem("password") */
+
+function login() {
+    const email = localStorage.getItem("email")
+    const password = localStorage.getItem("password")
+    form.style.display = "none";
+    usuarioSection.style.display="block";
+    titleEmail.innerHTML = email
+    titlePassword.innerHTML = password
+}
+
+const titleEmail = document.querySelector("#email")
+const titlePassword = document.querySelector("#password")
+const form = document.querySelector("#contenedor-login")
+const usuarioSection = document.querySelector("#usuario-logged")
+const btnCerrarSesion = document.querySelector("#cerrar-sesion")
+
+if (email !== null && password !== null) {
+    /* alert ("porfavor ingrese sus datos") */
+}else{
+    usuarioSection.style.display = "none"
+}
+
+btnCerrarSesion.onclick = function () {
+    localStorage.removeItem("email")
+    localStorage.removeItem("password")
+
+    usuarioSection.style.display = "none";
+    form.style.display="block"
+}
+
+usuarioSection.style.display = "none";
