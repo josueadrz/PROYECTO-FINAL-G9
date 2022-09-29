@@ -64,13 +64,13 @@
                 <a class="nav-link" href="#">PROMOCIONES</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">CARRITO</a>
+                <a class="nav-link" href="#">DELIVERY</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                <a class="nav-link active dropdown-toggle disabled" href="#" role="button" data-bs-toggle="dropdown"
                   aria-expanded="false">LOGIN</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="../pages/login.html">Login</a></li>
+                  <li><a class="dropdown-item" href="../pages/login.html">Iniciar sesion</a></li>
                   <li><a class="dropdown-item" href="#">Registrate</a></li>
                   <li>
                     <hr class="dropdown-divider">
@@ -79,12 +79,15 @@
                 </ul>
               </li>
               <li class="nav-item mt-5">
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <button class="btn btn-sm btn-danger me-1 d-lg-none" type="button"><i class="fa-solid fa-phone fa-md "
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <button class="btn btn-sm btn-danger me-1 d-lg-none" type="button"><i class="fa-solid fa-phone fa-md "
                   style="color: white"></i> 992 135 641</button>
               </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="#"><h5 id="usuario-nav"></h5></a>
+              </li> -->
             </ul>
           </div>
         </div>
@@ -97,6 +100,9 @@
                 <span class="visually-hidden ">unread messages</span>
             </button>
           </form>
+        </div>
+        <div class="container-fluid col-lg-1 col-md-1 col-sm-1 mx-2">
+          <h4 id="usuario-nav"></h4>
         </div>
       </div>
     </nav>
@@ -124,19 +130,19 @@
       <div class="contenedor__login-register">
         <!-- login -->
         <form action="" class="formulario__login">
-          <h2>Inicias Sesión</h2>
-          <input type="text" name="email" placeholder="Correo Electronico" />
+          <h2>Iniciar Sesión</h2>
+          <input type="email" name="email" placeholder="Correo Electronico" />
           <input type="password" name="password" placeholder="Contraseña" />
           <button id="btn-login">Entrar</button>
         </form>
         <!-- registro -->
         <form action="" class="formulario__register">
           <h2>Regístrarse</h2>
-          <input type="text" placeholder="Nombre Completo">
-          <input type="text" placeholder="Correo Electronico">
-          <input type="text" placeholder="Usuario">
-          <input type="password" placeholder="Contraseña">
-          <button>Regístrate</button>
+          <input type="text" name="nombre" placeholder="Nombre Completo" />
+          <input type="email" name="email" placeholder="Correo Electronico" />
+          <input type="text" name="usuario" placeholder="Usuario" />
+          <input type="password" name="password" placeholder="Contraseña" />
+          <button id="btn-register">Regístrate</button>
 
         </form>
 
@@ -144,11 +150,21 @@
 
     </div>
 
-    <section id="usuario-logged">
-      <h1 id="email"></h1>
-      <h2 id="password"></h2>
-      <button id="cerrar-sesion">Cerrar Sesion</button>
+    <section id="usuario-logged" class="contenedor-logout">
+      <h2 class="logout-title">Tu Nombre:</h2>
+      <h2 class="logout-text" id="nombre"></h2>
+      <h2 class="logout-title">Tu Usuario:</h2>
+      <h2 class="logout-text" id="usuario"></h2>
+      <h2 class="logout-title">Tu Email:</h2>
+      <h2 class="logout-text" id="email"></h2>
+      <h2 class="logout-title">Tu Contraseña:</h2>
+      <h4 type="password" class="logout-text" id="password"></h4>
+      <!-- <h4><a class="logout_shopping-link" href="../pages/carta.html"> Vamos por las Pizzas</a></h4> -->
+      <button class="logout-button" id="cerrar-sesion">Cerrar Sesion</button>
+      <button class="logout_shopping-link"><a href="./carta.html">Ir por todas las Pizzas</a></button>
     </section>
+
+
 
   </main>
 
@@ -161,6 +177,8 @@
   integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
 
 <script src="https://kit.fontawesome.com/f5c74ec31b.js" crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/353a305f8a.js" crossorigin="anonymous"></script>
+
+
+<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 
 </html>

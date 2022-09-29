@@ -8,7 +8,7 @@ body {
 
 .imgnormalizada img {
     width: 100%;
-    height: 50em;
+    height: 80vh;
     object-fit: contain;
     overflow: hidden;
 }
