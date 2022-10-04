@@ -45,7 +45,6 @@ function iniciarSesion() {
         caja_trasera_login.style.display = "none";
     }
 
-
 }
 
 function register() {
@@ -69,7 +68,7 @@ function register() {
 
 /* programacion para acceso a datos de login*/
 const btnRegister = document.querySelector("#btn-register")
-const btnLogin = document.querySelector("#btn-login") //
+/* const btnLogin = document.querySelector("#btn-login") // */
 
 btnRegister.onclick = function (event) {
     event.preventDefault();
@@ -85,22 +84,6 @@ btnRegister.onclick = function (event) {
 login();
 
 }
-
-btnLogin.onclick = function (event) {
-    event.preventDefault();
-
-    const inputs = document.querySelectorAll("input");
-
-    inputs.forEach((input) => {
-        console.log(inputs)
-        localStorage.setItem(input.name, input.value)
-});
-
-login();
-
-}
-
-
 
 function login() {
     const email = localStorage.getItem("email")
