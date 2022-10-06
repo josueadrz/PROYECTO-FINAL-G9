@@ -11,6 +11,7 @@
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <!-- css -->
   <link rel="stylesheet" href="./css/header.css">
+  <link rel="stylesheet" href="./css/flip.css">
   <link rel="stylesheet" href="./css/carrusel.css">
   <link rel="stylesheet" href="./css/favoritos.css">
 
@@ -60,7 +61,7 @@
                 <a class="nav-link" href="#">PROMOCIONES</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">DELIVERY</a>
+                <a class="nav-link" href="./pages/delivery.html">DELIVERY</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -103,6 +104,22 @@
 
 
   <main role="main">
+
+    <section class="card-flip">
+      <div class="flip">
+        <div class="content">
+          <div class="front">
+            <h2> <img src="./Assets/logo-trans.webp" alt=""></h2>
+            <p>Elige tu Pizza</p>
+          </div>
+          <div class="back">
+            <h2><img src="./Assets/logo-trans.webp" alt=""></h2>
+            <p>Totalmente artesanal</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
 
     <section class="container mt-3">
 
@@ -489,8 +506,14 @@
 
       </div>
     </section>
-  </main>
 
+    <div>
+      <a class="btn-wsp" href="https://api.whatsapp.com/send?phone=992135641" target="_blank" rel="noopener noreferrer">
+        <img src="./Assets/ico-whatsapp.png" alt="Whatsapp">
+      </a>
+    </div>
+
+  </main>
 
   <!----------------------- footer --------------------------->
   <footer>
@@ -597,7 +620,7 @@
   </footer>
 
 
-  
+
 </body>
 
 <!-- <script src="../js/login.js"></script> -->
