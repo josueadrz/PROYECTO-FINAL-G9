@@ -13,7 +13,6 @@
    <link rel="stylesheet" href="../css/header.css">
    <link rel="stylesheet" href="../css/maps.css">
 
-
    <title>Pizzeria Villamore</title>
 
 </head>
@@ -69,18 +68,14 @@
                         <ul class="dropdown-menu">
                            <li><a class="dropdown-item" href="./login.html">Iniciar sesion</a></li>
                            <li><a class="dropdown-item" href="./login.html">Registrate</a></li>
-                           <li>
-                              <hr class="dropdown-divider">
-                           </li>
+                           <hr class="dropdown-divider">
                            <li><a class="dropdown-item" href="#">Llamanos</a></li>
                         </ul>
                      </li>
                      <li class="nav-item mt-5">
-                     <li>
                         <hr class="dropdown-divider">
-                     </li>
-                     <button class="btn btn-sm btn-danger me-1 d-lg-none" type="button"><i
-                           class="fa-solid fa-phone fa-md " style="color: white"></i> 992 135 641</button>
+                        <button class="btn btn-sm btn-danger me-1 d-lg-none" type="button"><i
+                              class="fa-solid fa-phone fa-md " style="color: white"></i> 992 135 641</button>
                      </li>
                   </ul>
                </div>
@@ -134,7 +129,7 @@
       <div class="container">
          <div class="row p-5">
             <p class="h1 text-center"><em>VISITA NUESTRO LOCAL</em></p>
-            <p class="h6 text-center"><em>Puedes hacer tus pedidos en cualquiera de ellas</em></p>
+            <p class="h6 text-center"><em>Puedes hacer tus pedidos en cualquier momento</em></p>
          </div>
 
          <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 g-5 mb-5">
@@ -159,11 +154,11 @@
                            <button class="btn btn-danger" type="button">Llamar 992 135 641</button>
                         </div>
                         <div class="d-grid mt-2">
-                           <button class="btn btn-success" style="background-color:#1ace53 ;" type="button">Whatsapp <a
-                                 href="https://api.whatsapp.com/send?phone=992135641" target="_blank"
-                                 rel="noopener noreferrer"><img src="../Assets/ico-whatsapp.png" alt="Whatsapp"
-                                    height="20px">
-                              </a></button>
+                           <a class="btn btn-primary border-0" role="button"
+                              href="https://api.whatsapp.com/send?phone=992135641" target="_blank"
+                              rel="noopener noreferrer" style="background-color:#1ace53 ;">Whatsapp
+                              <img src="../Assets/ico-whatsapp.png" alt="Whatsapp" height="20px">
+                           </a>
                         </div>
                      </div>
 
@@ -195,26 +190,30 @@
                         <p>¡Realiza tu pedido🍕 con nosotros siguiendo estos simples pasos!😀</p>
                         <p>📞 Pedidos al: 992135641</p>
                         <p>🛑 Pagos en efectivo, tarjetas, yape o deposito a cuenta bcp.</p>
-                        
+
                      </div>
                      <div class="gallery container text-center">
                         <h4>Como hacer tu pedido</h4>
                         <div class="row row-cols-2">
                            <div class="col d-flex justify-content-end">
-                              <a href="assets/img/image2.jpg"><img class="img-fluid image rounded"
-                                    src="../Assets/delivery1.jpg"></a>
+                              <button class="btn" data-bs-toggle="modal" data-bs-target="#modalDelivery1">
+                                 <img class="img-fluid image rounded" src="../Assets/delivery1.jpg">
+                              </button>
                            </div>
                            <div class="col d-flex ">
-                              <a href="assets/img/image3.jpg"><img class="img-fluid image rounded"
-                                    src="../Assets/delivery2.jpg"></a>
+                              <button class="btn" data-bs-toggle="modal" data-bs-target="#modalDelivery2">
+                                 <img class="img-fluid image rounded" src="../Assets/delivery2.jpg">
+                              </button>
                            </div>
                            <div class="col d-flex justify-content-end">
-                              <a href="https://goo.gl/maps/visjJk3RRs1Pio3XA"><img class="img-fluid image rounded"
-                                    src="../Assets/delivery3.jpg"></a>
+                              <button class="btn" data-bs-toggle="modal" data-bs-target="#modalDelivery3">
+                                 <img class="img-fluid image rounded" src="../Assets/delivery3.jpg">
+                              </button>
                            </div>
                            <div class="col d-flex">
-                              <a href="https://goo.gl/maps/visjJk3RRs1Pio3XA"><img class="img-fluid image rounded"
-                                    src="../Assets/delivery4.jpg"></a>
+                              <button class="btn" data-bs-toggle="modal" data-bs-target="#modalDelivery4">
+                                 <img class="img-fluid image rounded" src="../Assets/delivery4.jpg">
+                              </button>
                            </div>
                         </div>
                      </div>
@@ -225,6 +224,79 @@
 
          </div>
       </div>
+
+      <!-- MODAL-01 -->
+      <div class="modal fade" id="modalDelivery1" tabindex="-1" area-hidden="true">
+         <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h4 class="modal-title">Primer Paso</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                  <p>Escribenos por Whatsapp para ver nuestra carta y promos</p>
+                  <div class="text-center">
+                     <img width="350" src="../Assets/delivery1.jpg" alt="">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- MODAL-02 -->
+      <div class="modal fade" id="modalDelivery2" tabindex="-1" area-hidden="true">
+         <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h4 class="modal-title">Segundo Paso</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                  <p>Mandanos el detalle de tu pedido</p>
+                  <div class="text-center">
+                     <img width="450" src="../Assets/delivery2.jpg" alt="">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- MODAL-03 -->
+      <div class="modal fade" id="modalDelivery3" tabindex="-1" area-hidden="true">
+         <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h4 class="modal-title">Tercer Paso</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                  <p>Envianos tu ubicacion actual</p>
+                  <div class="text-center">
+                     <img width="450" src="../Assets/delivery3.jpg" alt="">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- MODAL-04 -->
+      <div class="modal fade" id="modalDelivery4" tabindex="-1" area-hidden="true">
+         <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h4 class="modal-title">Cuarto Paso</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                  <p>Comentanos tu medio de pago</p>
+                  <div class="text-center">
+                     <img width="450" src="../Assets/delivery4.jpg" alt="">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
 
       <div>
          <a class="btn-wsp" href="https://api.whatsapp.com/send?phone=992135641" target="_blank"
