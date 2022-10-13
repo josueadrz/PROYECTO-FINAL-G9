@@ -69,7 +69,7 @@
                            <li><a class="dropdown-item" href="./login.html">Iniciar sesion</a></li>
                            <li><a class="dropdown-item" href="./login.html">Registrate</a></li>
                            <hr class="dropdown-divider">
-                           <li><a class="dropdown-item" href="#">Llamanos</a></li>
+                           <li><a class="dropdown-item" href="#heading">Llamanos</a></li>
                         </ul>
                      </li>
                      <li class="nav-item mt-5">
@@ -100,16 +100,16 @@
          <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                <div class="carousel-item active" data-bs-interval="3000">
-                  <img src="../Assets/delivery01.webp" class="d-block w-100" alt="¿Con Hambre?">
+                  <img src="../Assets/carrusdelivery01.webp" class="d-block w-100" alt="¿Con Hambre?">
                </div>
                <div class="carousel-item" data-bs-interval="3000">
-                  <img src="../Assets/delivery03.webp" class="d-block w-100" alt="Sabor sin fronteras">
+                  <img src="../Assets/carrusdelivery03.webp" class="d-block w-100" alt="Sabor sin fronteras">
                </div>
                <div class="carousel-item" data-bs-interval="3000">
-                  <img src="../Assets/delivery02.webp" class="d-block w-100" alt="Te la llevamos">
+                  <img src="../Assets/carrusdelivery02.webp" class="d-block w-100" alt="Te la llevamos">
                </div>
                <div class="carousel-item" data-bs-interval="3000">
-                  <img src="../Assets/delivery04.webp" class="d-block w-100" alt="Pizzas">
+                  <img src="../Assets/carrusdelivery04.webp" class="d-block w-100" alt="Pizzas">
                </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
@@ -149,6 +149,8 @@
                         <li class="list-group-item">Precios Accesibles para tu pedido</li>
                      </ul>
 
+                     
+
                      <div class="mt-auto p-0">
                         <div class="d-grid mt-2">
                            <button class="btn btn-danger" type="button">Llamar 992 135 641</button>
@@ -161,19 +163,19 @@
                            </a>
                         </div>
                      </div>
-
                   </div>
                </div>
             </div>
             <div class="col col-11 col-sm-11 col-md-7 col-lg-8 col-xl-8">
                <div class="card h-100 mb-1 border-1 rounded">
-                  <div class="map">
-                     <iframe height="450" style="border:0" loading="lazy" allowfullscreen
-                        src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJsXvWDzrPBZERksmlW6uTzRw&key=AIzaSyC1GwuWtjOqNc8mzk0sKlnBGx-_GVD-xXI">
-                     </iframe>
+                  <div id="map">
+                  </div>
+                  <div class="btn-maps">
+                     <button onclick="findMe()">Buscar mi ubicacion</button>
+                     <button onclick="pizzaDefault()">Ir a Pizzas Villamore</button>
                   </div>
                   <div class="card-body d-flex align-item-start flex-column">
-                     <div class="heading">
+                     <div id="heading" class="heading">
                         <h3>Delivery - Villamore Pizzas</h3>
                         <div class="rating">
                            <i class="fa-regular fa-star-sharp-half-stroke"></i>
@@ -197,22 +199,22 @@
                         <div class="row row-cols-2">
                            <div class="col d-flex justify-content-end">
                               <button class="btn" data-bs-toggle="modal" data-bs-target="#modalDelivery1">
-                                 <img class="img-fluid image rounded" src="../Assets/delivery1.jpg">
+                                 <img class="img-fluid image rounded" src="../Assets/delivery1.webp">
                               </button>
                            </div>
                            <div class="col d-flex ">
                               <button class="btn" data-bs-toggle="modal" data-bs-target="#modalDelivery2">
-                                 <img class="img-fluid image rounded" src="../Assets/delivery2.jpg">
+                                 <img class="img-fluid image rounded" src="../Assets/delivery2.webp">
                               </button>
                            </div>
                            <div class="col d-flex justify-content-end">
                               <button class="btn" data-bs-toggle="modal" data-bs-target="#modalDelivery3">
-                                 <img class="img-fluid image rounded" src="../Assets/delivery3.jpg">
+                                 <img class="img-fluid image rounded" src="../Assets/delivery3.webp">
                               </button>
                            </div>
                            <div class="col d-flex">
                               <button class="btn" data-bs-toggle="modal" data-bs-target="#modalDelivery4">
-                                 <img class="img-fluid image rounded" src="../Assets/delivery4.jpg">
+                                 <img class="img-fluid image rounded" src="../Assets/delivery4.webp">
                               </button>
                            </div>
                         </div>
@@ -236,7 +238,7 @@
                <div class="modal-body">
                   <p>Escribenos por Whatsapp para ver nuestra carta y promos</p>
                   <div class="text-center">
-                     <img width="350" src="../Assets/delivery1.jpg" alt="">
+                     <img width="250" src="../Assets/delivery1.webp" alt="Escribe por whataspp">
                   </div>
                </div>
             </div>
@@ -254,7 +256,7 @@
                <div class="modal-body">
                   <p>Mandanos el detalle de tu pedido</p>
                   <div class="text-center">
-                     <img width="450" src="../Assets/delivery2.jpg" alt="">
+                     <img width="250" src="../Assets/delivery2.webp" alt="Detalle de tu pedido">
                   </div>
                </div>
             </div>
@@ -272,7 +274,7 @@
                <div class="modal-body">
                   <p>Envianos tu ubicacion actual</p>
                   <div class="text-center">
-                     <img width="450" src="../Assets/delivery3.jpg" alt="">
+                     <img src="../Assets/delivery3.webp" alt="Enviar ubicacion">
                   </div>
                </div>
             </div>
@@ -290,7 +292,7 @@
                <div class="modal-body">
                   <p>Comentanos tu medio de pago</p>
                   <div class="text-center">
-                     <img width="450" src="../Assets/delivery4.jpg" alt="">
+                     <img  src="../Assets/delivery4.webp" alt="Mediio de pago">
                   </div>
                </div>
             </div>
@@ -416,6 +418,7 @@
 
 </body>
 
+<script src="../js/maps.js"></script>
 <!-- <script src="../js/login.js"></script> -->
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -427,6 +430,6 @@
 <!-- icons fon Awesone -->
 <script src="https://kit.fontawesome.com/f5c74ec31b.js" crossorigin="anonymous"></script>
 
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </html>

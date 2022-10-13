@@ -3,6 +3,7 @@
 }
 
 .heading {
+    margin-top: 10px;
     margin-bottom: 5px;
 }
 
@@ -19,8 +20,27 @@
     margin: 0px;
 }
 
-.map {
-    margin-bottom: 10px;
+.btn-maps {
+    display: flex;
+    justify-content: end;
+    margin: 5px;
+    gap: 5px;
+}
+
+.ubcOff{
+    padding: 20px;
+background-color: red;
+color: #fff;
+font-size:1.5rem;
+font-weight: 600;
+}
+
+.ubcOn{
+    padding: 20px;
+background-color: green;
+color: #fff;
+font-size:1.5rem;
+font-weight: 600;
 }
 
 .gallery .row .col{
@@ -31,11 +51,6 @@
 .gallery .btn{
     padding: 1px;
 }
-
-/* .map iframe {
-    width: 50px;
-} */
-
 
 @media(max-width: 576px) {
     iframe {
