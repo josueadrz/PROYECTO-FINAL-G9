@@ -96,12 +96,12 @@ function login() {
     titlePassword.innerHTML = password
     titleNombre.innerHTML = nombre
     titleUsuario.innerHTML = usuario
-    titleUsuarioNav.innerHTML= usuario
+    titleUsuarioNav.innerHTML= usuario/*  */
 };
 
 const titleNombre = document.querySelector("#nombre")
 const titleUsuario = document.querySelector("#usuario")
-const titleUsuarioNav = document.querySelector("#usuario-nav")
+const titleUsuarioNav = document.querySelector("#usuario-nav")/*  */
 const titleEmail = document.querySelector("#email")
 const titlePassword = document.querySelector("#password")
 const form = document.querySelector("#contenedor-login")
