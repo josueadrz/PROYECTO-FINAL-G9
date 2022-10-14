@@ -12,27 +12,6 @@ body {
     object-fit: contain;
     overflow: hidden;
 }
-
-  .carousel-control-prev {
-    background-color: white;
-  }
-
-  .carousel-control-next {
-    background-color: white;
-  }
-
   .imgnormalizada {
     background-color: white;
   }
-.carousel-control-prev-icon {
-    
-    background-color: red;
-    border-radius: 40%;
-}
-
-.carousel-control-next-icon {
-    
-    background-color: red;
-    border-radius: 40%;
-    
-}

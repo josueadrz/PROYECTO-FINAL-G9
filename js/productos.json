@@ -1,0 +1,95 @@
+[
+    {
+        "personal":10,
+        "familiar":19,
+        "extra":27,
+        "id":1,
+        "titulo": "americana",
+        "thuimbnail":"../Assets/americana.webp"
+        
+    },
+    {
+        "personal":10,
+        "familiar":19,
+        "extra":27,
+        "id":2,
+        "titulo": "americana",
+        "thuimbnail":"../Assets/americana.webp"
+        
+    },
+    {
+        "personal":11,
+        "familiar":20,
+        "extra":28,
+        "id":3,
+        "titulo": "salami",
+        "thuimbnail":"../Assets/salami.webp"
+        
+    },
+    {
+        "personal":11,
+        "familiar":20,
+        "extra":28,
+        "id":4,
+        "titulo": "Hawaiana",
+        "thuimbnail":"../Assets/hawaiana.webp"
+        
+    },
+    {
+        "personal":10,
+        "familiar":19,
+        "extra":28,
+        "id":5,
+        "titulo": "Vegetariana",
+        "thuimbnail":"../Assets/vegetariana.webp"
+        
+    },
+    {
+        "personal":14,
+        "familiar":25,
+        "extra":36,
+        "id":6,
+        "titulo": "Suprema",
+        "thuimbnail":"../Assets/suprema.webp"
+        
+    },
+    {
+        "personal":13,
+        "familiar":24,
+        "extra":35,
+        "id":7,
+        "titulo": "Carnívora",
+        "thuimbnail":"../Assets/carnivora.webp"
+        
+    },
+    {
+        "personal":12,
+        "familiar":22,
+        "extra":30,
+        "id":8,
+        "titulo": "Dong King Kongicana",
+        "thuimbnail":"../Assets/dongkingkong.webp"
+        
+    },
+    {
+        "personal":12,
+        "familiar":22,
+        "extra":30,
+        "id":9,
+        "titulo": "La Charapa",
+        "thuimbnail":"../Assets/charapa.webp"
+        
+    },
+    {
+        "personal":16,
+        "familiar":28,
+        "extra":38,
+        "id":10,
+        "titulo": "Villamore",
+        "thuimbnail":"../Assets/villamore.webp"
+        
+    }
+
+
+
+]
