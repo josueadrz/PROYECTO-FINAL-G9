@@ -36,7 +36,7 @@ const setCarrito = objeto => {
       const producto = {
          id: objeto.querySelector('.agregarCarrito').dataset.id,
          title: objeto.querySelector('.card-title').textContent,
-         //size:objeto.querySelector('.form-select .size').textContent,
+         //size:objeto.querySelector('option[selected] .size').textContent,
          //precio:objeto.querySelector('.precio').textContent,
          cantidad:1,
          imagen:objeto.querySelector('.card-img-top').src
