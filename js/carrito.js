@@ -32,13 +32,12 @@ const agregarCarrito = e =>{
 
 
 //crea objeto producto con informacion de la card
-const setCarrito = objeto => {
-      //console.log(objeto)
+const setCarrito = objeto => {     
       const producto = {
          id: objeto.querySelector('.agregarCarrito').dataset.id,
          title: objeto.querySelector('.card-title').textContent,
-         //size:objeto.querySelector('option selected').textContent,
-         //precio:objeto.querySelector('option selected span').textContent,
+         //size:objeto.querySelector('option[selected] .size').textContent,
+         //precio:objeto.querySelector('.precio').textContent,
          cantidad:1,
          imagen:objeto.querySelector('.card-img-top').src
       }
@@ -54,9 +53,10 @@ const setCarrito = objeto => {
 const renderCarrito = () =>{   
    items.innerHTML=''
    Object.values(carrito).forEach(producto =>{
-      templateCarrito.querySelector('th').textContent = producto.id
+      templateCarrito.querySelector('img').src = producto.imagen
       templateCarrito.querySelectorAll('td')[0].textContent = producto.title
-      templateCarrito.querySelectorAll('td')[1].textContent = producto.cantidad
+      templateCarrito.querySelectorAll('td')[2].textContent = producto.cantidad
+      templateCarrito.querySelectorAll('td')[1].textContent = producto.size
       templateCarrito.getElementById('botonMas').dataset.id = producto.id
       templateCarrito.getElementById('botonMenos').dataset.id = producto.id
       //templateCarrito.querySelector('span').textContent = producto.cantidad * producto.precio
@@ -83,7 +83,7 @@ const renderFooter =()=>{
    const nCantidad = Object.values(carrito).reduce((acc,{cantidad})=> acc + cantidad,0)
    //const nPrecio = Object.values(carrito).reduce((acc,{cantidad,precio})=>acc + cantidad * precio,0)
 
-   templateFooter.querySelectorAll('td')[0].textContent = nCantidad
+   templateFooter.querySelectorAll('td')[1].textContent = nCantidad
    //templateFooter.querySelector('span').textContent = nPrecio
 
    //actualiza la notificacion del boton
