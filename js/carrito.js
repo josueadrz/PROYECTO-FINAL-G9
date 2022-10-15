@@ -38,7 +38,7 @@ const setCarrito = objeto => {
          id: objeto.querySelector('.agregarCarrito').dataset.id,
          title: objeto.querySelector('.card-title').textContent,
          //size:objeto.querySelector('option selected').textContent,
-         //precio:objeto.querySelector('.form-select,option selected span').textContent,
+         //precio:objeto.querySelector('option selected span').textContent,
          cantidad:1,
          imagen:objeto.querySelector('.card-img-top').src
       }
@@ -72,6 +72,7 @@ const renderCarrito = () =>{
 //pinta totales
 const renderFooter =()=>{
    footer.innerHTML =''
+   contadorCarrito.innerHTML =''
    if(Object.keys(carrito).length === 0){
       footer.innerHTML =`
       <th scope="row" colspan="5">CARRITO VACIO</th>
