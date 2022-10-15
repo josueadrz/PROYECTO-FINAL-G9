@@ -3,7 +3,7 @@
    }
 
 .cardcarousel-container{
-    background-image: url("./sources/carouselbckground.jpeg");
+    background-image: url("../Assets/carouselbckground.webp");
     background-size: cover;
 }
 
@@ -38,7 +38,7 @@
     box-shadow: 6px 6px 8px 0 goldenrod;
 }
    
-.btn{
+a .btn{
     background: #f02f05;
     color: #e1e1e1;
 }

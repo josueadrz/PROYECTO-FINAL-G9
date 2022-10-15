@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login de registro</title>
+  <!-- google fonst -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+  <!-- css -->
+  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="../css/header.css">
+
+</head>
+
+
+<body>
+
+  <header>
+
+    <nav class="navbar fixed-top bg-light navbar-expand-lg">
+      <!-- logotipo -->
+      <div class="d-inline-flex col-md-3 col-sm-3">
+        <a class="navbar-brand" href="../index.html">
+          <img src="../Assets/logo-trans.webp" alt="Logo Villamore" width="180" height="60">
+        </a>
+      </div>
+      <!-- contenedor todo navegacion -->
+      <div class="d-inline-flex col-md-8 col-sm-8">
+        <!-- contacto telefono-numero -->
+        <div class="d-inline-flex d-none d-sm-block col-sm-4">
+          <button class="btn btn-sm btn-danger me-1" type="button"><i class="fa-solid fa-phone fa-md "
+              style="color: white"></i> 992 135 641</button>
+        </div>
+        <!-- hamburguesa responsive-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- menu navegacion desk y movil -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <!-- encabezado hamburguesa -->
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Villamore</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <!-- cuerpo nav y responsive -->
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="../index.html">INICIO</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../pages/carta.html">CARTA</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">PROMOCIONES</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./delivery.html">DELIVERY</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle disabled" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">LOGIN</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="../pages/login.html">Iniciar sesion</a></li>
+                  <li><a class="dropdown-item" href="#">Registrate</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Llamanos</a></li>
+                </ul>
+              </li>
+              <li class="nav-item mt-5">
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <button class="btn btn-sm btn-danger me-1 d-lg-none" type="button"><i class="fa-solid fa-phone fa-md "
+                  style="color: white"></i> 992 135 641</button>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="#"><h5 id="usuario-nav"></h5></a>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+
+        <div class="container-fluid col-md-2 col-sm-2 mx-2">
+          <form class="d-flex" role="search">
+            <button class="btn btn-danger position-relative" type="button" style="border-radius:50%">
+              <i class="fa-solid fa-cart-shopping fa-lg" style="color: white"></i>
+              <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-primary">10
+                <span class="visually-hidden ">unread messages</span>
+            </button>
+          </form>
+        </div>
+        <div class="container-fluid col-lg-1 col-md-1 col-sm-1 mx-2">
+          <h4 id="usuario-nav"></h4>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <div id="contenedor-login" class="contenedor__todo">
+
+      <div class="caja__trasera">
+        <div class="caja__trasera-login">
+          <h3>¿Ya tienes una cuenta?</h3>
+          <p>Inicia sesión para entrar a la página</p>
+          <button id="btn__iniciar-sesion">Iniciar Sesión</button>
+        </div>
+        <div class="caja__trasera-register">
+          <h3>¿Aún no tienes una cuenta?</h3>
+          <p>Regístrate para que puedas iniciar sesión</p>
+          <button id="btn__registrarse">Regístrate</button>
+        </div>
+      </div>
+
+      <!-- formulario de login y registro -->
+      <div class="contenedor__login-register">
+        <!-- login -->
+        <form action="" class="formulario__login">
+          <h2>Iniciar Sesión</h2>
+          <input type="email" name="email" placeholder="Correo Electronico" />
+          <input type="password" name="password" placeholder="Contraseña" />
+          <button id="btn-login">Entrar</button>
+        </form>
+        <!-- registro -->
+        <form action="" class="formulario__register">
+          <h2>Regístrarse</h2>
+          <input type="text" name="nombre" placeholder="Nombre Completo" />
+          <input type="email" name="email" placeholder="Correo Electronico" />
+          <input type="text" name="usuario" placeholder="Usuario" />
+          <input type="password" name="password" placeholder="Contraseña" />
+          <button id="btn-register">Regístrate</button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+    <section id="usuario-logged" class="contenedor-logout">
+      <h2 class="logout-title">Tu Nombre:</h2>
+      <h2 class="logout-text" id="nombre"></h2>
+      <h2 class="logout-title">Tu Usuario:</h2>
+      <h2 class="logout-text" id="usuario"></h2>
+      <h2 class="logout-title">Tu Email:</h2>
+      <h2 class="logout-text" id="email"></h2>
+      <h2 class="logout-title">Tu Contraseña:</h2>
+      <h4 type="password" class="logout-text" id="password"></h4>
+      <!-- <h4><a class="logout_shopping-link" href="../pages/carta.html"> Vamos por las Pizzas</a></h4> -->
+      <button class="logout-button" id="cerrar-sesion">Cerrar Sesion</button>
+      <button class="logout_shopping-link"><a href="./carta.html">Ir por todas las Pizzas</a></button>
+    </section>
+
+
+
+  </main>
+
+  <script src="../js/login.js"></script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+  integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+
+<script src="https://kit.fontawesome.com/f5c74ec31b.js" crossorigin="anonymous"></script>
+
+
+<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+
+</html>

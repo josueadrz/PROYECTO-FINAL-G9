@@ -1,0 +1,24 @@
+.col{
+    transition:0.3s;
+}
+
+.col:hover{
+    transform: scale(1.05);
+}
+.card{
+    background-image:url("../Assets/maderavieja.webp");
+    color: #fff;
+}
+
+/* .card-body{
+    background: linear-gradient(0deg, #f1eceb, #6420069b);
+    
+} */
+
+.card-body div{
+    background:transparent;
+}
+
+.card-body p{
+    font-size:0.8em;
+}
