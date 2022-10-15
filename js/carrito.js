@@ -32,17 +32,22 @@ const agregarCarrito = e =>{
 
 //crea objeto producto con informacion de la card
 const setCarrito = objeto => { 
+         const opcion=objeto.querySelector('.form-select').value;
+         const partes = opcion.split(",");
+         const precio = partes[0];
+         const size = partes[1];
+
     
          const producto = {
          id: objeto.querySelector('.agregarCarrito').dataset.id,
          title: objeto.querySelector('.card-title').textContent,
-         //size: objeto.querySelector('.form-select').dataset.size,
-         precio: objeto.querySelector('.form-select').value,
+         size: size,
+         precio: precio,
          cantidad: 1,
          imagen:objeto.querySelector('.card-img-top').src
       }
       
-      if(carrito.hasOwnProperty(producto.id)){
+      if(carrito.hasOwnProperty(producto.id) ){     
          producto.cantidad = carrito[producto.id].cantidad + 1
      }
 
@@ -58,8 +63,7 @@ const renderCarrito = () =>{
       templateCarrito.querySelector('img').src = producto.imagen
       templateCarrito.querySelectorAll('td')[0].textContent = producto.title
       templateCarrito.querySelectorAll('td')[2].textContent = producto.cantidad
-      //templateCarrito.querySelectorAll('td')[1].textContent = producto.size
-      //templateCarrito.querySelectorAll('td')[3].textContent = 
+      templateCarrito.querySelectorAll('td')[1].textContent = producto.size
       templateCarrito.getElementById('botonMas').dataset.id = producto.id
       templateCarrito.getElementById('botonMenos').dataset.id = producto.id
       templateCarrito.querySelector('span').textContent = producto.cantidad * producto.precio
