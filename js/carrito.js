@@ -1,100 +1,125 @@
-const boton = document.querySelectorAll('.card button')
-const contenedorCarrito = document.getElementById('carrito-contenedor')
-const botonVaciar = document.getElementById('vaciar-carrito')
+const tarjetas = document.getElementById("tarjetas")
+const items = document.getElementById('items')
+const footer = document.getElementById('footerCarrito')
+const templateFooter = document.getElementById('template-footer').content
+const templateCarrito = document.getElementById('template-carrito').content
 const contadorCarrito = document.getElementById('contadorCarrito')
-const cantidad = document.getElementById('cantidad')
-const precioTotal = document.getElementById('precioTotal')
-const cantidadTotal = document.getElementById('cantidadTotal')
-let carrito = []
+const fragment = document.createDocumentFragment()
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem('carrito')){
-        carrito = JSON.parse(localStorage.getItem('carrito'))
-        actualizarCarrito()
-    }
+let carrito = {}
+
+document.addEventListener('DOMContentLoaded',()=>{
+   if(localStorage.getItem('carrito')){
+      carrito = JSON.parse(localStorage.getItem('carrito'))
+      renderCarrito()
+   }
 })
 
-botonVaciar.addEventListener('click', () => {
-    carrito.length = 0
-    actualizarCarrito()
+tarjetas.addEventListener('click', e=>{
+   agregarCarrito(e)
 })
 
+items.addEventListener('click',e=>{
+   accionesBtn(e)
+})
+//Añadir item a carrito
+const agregarCarrito = e =>{  
+   if(e.target.classList.contains('agregarCarrito')){     
+      setCarrito(e.target.closest('.card'))
+   }
+   e.stopPropagation()
+}
+
+
+//crea objeto producto con informacion de la card
+const setCarrito = objeto => {     
+      const producto = {
+         id: objeto.querySelector('.agregarCarrito').dataset.id,
+         title: objeto.querySelector('.card-title').textContent,
+         //size:objeto.querySelector('option[selected] .size').textContent,
+         //precio:objeto.querySelector('.precio').textContent,
+         cantidad:1,
+         imagen:objeto.querySelector('.card-img-top').src
+      }
+
+      if(carrito.hasOwnProperty(producto.id)){
+         producto.cantidad = carrito[producto.id].cantidad + 1
+      }
+
+      carrito[producto.id] = {...producto}
+      renderCarrito()
+}
+//pinta los productos en el template del carrito
+const renderCarrito = () =>{   
+   items.innerHTML=''
+   Object.values(carrito).forEach(producto =>{
+      templateCarrito.querySelector('img').src = producto.imagen
+      templateCarrito.querySelectorAll('td')[0].textContent = producto.title
+      templateCarrito.querySelectorAll('td')[2].textContent = producto.cantidad
+      templateCarrito.querySelectorAll('td')[1].textContent = producto.size
+      templateCarrito.getElementById('botonMas').dataset.id = producto.id
+      templateCarrito.getElementById('botonMenos').dataset.id = producto.id
+      //templateCarrito.querySelector('span').textContent = producto.cantidad * producto.precio
+      const clone = templateCarrito.cloneNode(true)
+      fragment.appendChild(clone)
+   })
+   items.appendChild(fragment)
+
+   renderFooter()
+
+   localStorage.setItem('carrito',JSON.stringify(carrito))
+}
+//pinta totales
+const renderFooter =()=>{
+   footer.innerHTML =''
+   contadorCarrito.innerHTML =''
+   if(Object.keys(carrito).length === 0){
+      footer.innerHTML =`
+      <th scope="row" colspan="5">CARRITO VACIO</th>
+      `
+      return
+   }
     
-    
-    boton.addEventListener('click', () => {
-        //esta funcion ejecuta el agregar el carrito con la id del producto
-        agregarAlCarrito(producto.id)
-        //
-    })
+   const nCantidad = Object.values(carrito).reduce((acc,{cantidad})=> acc + cantidad,0)
+   //const nPrecio = Object.values(carrito).reduce((acc,{cantidad,precio})=>acc + cantidad * precio,0)
 
+   templateFooter.querySelectorAll('td')[1].textContent = nCantidad
+   //templateFooter.querySelector('span').textContent = nPrecio
 
+   //actualiza la notificacion del boton
+   contadorCarrito.innerText = nCantidad 
 
-//AGREGAR AL CARRITO
-const agregarAlCarrito = (prodId) => {
+   const clone = templateFooter.cloneNode(true)
+   fragment.appendChild(clone)
+   footer.appendChild(fragment)
 
-    //PARA AUMENTAR LA CANTIDAD Y QUE NO SE REPITA
-    const existe = carrito.some (prod => prod.id === prodId) //comprobar si el elemento ya existe en el carro
-
-    if (existe){ //SI YA ESTÁ EN EL CARRITO, ACTUALIZAMOS LA CANTIDAD
-        const prod = carrito.map (prod => { //creamos un nuevo arreglo e iteramos sobre cada curso y cuando
-            // map encuentre cual es el q igual al que está agregado, le suma la cantidad
-            if (prod.id === prodId){
-                prod.cantidad++
-            }
-        })
-    } else { 
-        const item = stockProductos.find((prod) => prod.id === prodId)//Trabajamos con las ID
-        //Una vez obtenida la ID, lo que haremos es hacerle un push para agregarlo al carrito
-        carrito.push(item)
-    }
-    //Va a buscar el item, agregarlo al carrito y llama a la funcion actualizarCarrito, que recorre
-    //el carrito y se ve.
-    actualizarCarrito() //LLAMAMOS A LA FUNCION QUE CREAMOS EN EL TERCER PASO. CADA VEZ Q SE 
-    //MODIFICA EL CARRITO
+   const vaciarCarrito = document.getElementById('vaciar-carrito')
+   vaciarCarrito.addEventListener('click',()=>{
+      carrito = {}
+      contadorCarrito.innerText = 0
+      renderCarrito()
+   })
+}
+//agregar o retirar item directo del carrito
+const accionesBtn =e=>{
+   if(e.target.classList.contains('btn-info')){
+      const producto = carrito[e.target.dataset.id]
+      producto.cantidad++
+      carrito[e.target.dataset.id]={...producto}
+      renderCarrito()
+   }
+   if(e.target.classList.contains('btn-danger')){
+      const producto = carrito[e.target.dataset.id]
+      producto.cantidad--
+     if(producto.cantidad === 0){
+      delete carrito[e.target.dataset.id]
+     }
+     renderCarrito()
+   }
+   e.stopPropagation()
 }
 
-const eliminarDelCarrito = (prodId) => {
-    const item = carrito.find((prod) => prod.id === prodId)
 
-    const indice = carrito.indexOf(item) //Busca el elemento q yo le pase y nos devuelve su indice.
 
-    carrito.splice(indice, 1) //Le pasamos el indice de mi elemento ITEM y borramos 
-    // un elemento 
-    actualizarCarrito() //LLAMAMOS A LA FUNCION QUE CREAMOS EN EL TERCER PASO. CADA VEZ Q SE 
-    //MODIFICA EL CARRITO
-    console.log(carrito)
-}
 
-const actualizarCarrito = () => {
-    //4- CUARTO PASO
-    //LOS APPENDS SE VAN ACUMULANDO CON LO QE HABIA ANTES
-    contenedorCarrito.innerHTML = "" //Cada vez que yo llame a actualizarCarrito, lo primero q hago
-    //es borrar el nodo. Y despues recorro el array lo actualizo de nuevo y lo rellena con la info
-    //actualizado
-    //3 - TERCER PASO. AGREGAR AL MODAL. Recorremos sobre el array de carrito.
 
-    //Por cada producto creamos un div con esta estructura y le hacemos un append al contenedorCarrito (el modal)
-    carrito.forEach((prod) => {
-        const div = document.createElement('div')
-        div.className = ('productoEnCarrito')
-        div.innerHTML = `
-        <p>${prod.nombre}</p>
-        <p>Precio:$${prod.precio}</p>
-        <p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p>
-        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
-        `
-
-        contenedorCarrito.appendChild(div)
-        
-        localStorage.setItem('carrito', JSON.stringify(carrito))
-
-    })
-    //SEPTIMO PASO
-    contadorCarrito.innerText = carrito.length // actualizamos con la longitud del carrito.
-    //OCTAVO PASO
-    console.log(carrito)
-    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
-    //Por cada producto q recorro en mi carrito, al acumulador le suma la propiedad precio, con el acumulador
-    //empezando en 0.
-
-}
