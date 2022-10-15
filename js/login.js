@@ -24,6 +24,7 @@ function anchoPagina() {
         formulario_register.style.display = "none";
         contenedor_login_register.style.left = "0px";
     }
+    
 }
 
 anchoPagina();
@@ -63,5 +64,60 @@ function register() {
         caja_trasera_login.style.opacity = "1";
     }
 
+}
+
+/* programacion para acceso a datos de login*/
+const btnRegister = document.querySelector("#btn-register")
+/* const btnLogin = document.querySelector("#btn-login") // */
+
+btnRegister.onclick = function (event) {
+    event.preventDefault();
+
+    const inputs = document.querySelectorAll("input");
+
+    inputs.forEach((input) => {
+        console.log(inputs)
+        localStorage.setItem(input.name, input.value)
+
+});
+
+login();
 
 }
+
+function login() {
+    const email = localStorage.getItem("email")
+    const password = localStorage.getItem("password")
+    const nombre = localStorage.getItem("nombre")
+    const usuario = localStorage.getItem("usuario")
+    form.style.display = "none";
+    usuarioSection.style.display="block";
+    titleEmail.innerHTML = email
+    titlePassword.innerHTML = password
+    titleNombre.innerHTML = nombre
+    titleUsuario.innerHTML = usuario
+    titleUsuarioNav.innerHTML= usuario/*  */
+};
+
+const titleNombre = document.querySelector("#nombre")
+const titleUsuario = document.querySelector("#usuario")
+const titleUsuarioNav = document.querySelector("#usuario-nav")/*  */
+const titleEmail = document.querySelector("#email")
+const titlePassword = document.querySelector("#password")
+const form = document.querySelector("#contenedor-login")
+const usuarioSection = document.querySelector("#usuario-logged")
+const btnCerrarSesion = document.querySelector("#cerrar-sesion")
+
+
+
+btnCerrarSesion.onclick = function () {
+    localStorage.removeItem("email")
+    localStorage.removeItem("password")
+    localStorage.removeItem("nombre")
+    localStorage.removeItem("usuario")
+
+    usuarioSection.style.display = "none";
+    form.style.display="block"
+}
+
+usuarioSection.style.display = "none";
