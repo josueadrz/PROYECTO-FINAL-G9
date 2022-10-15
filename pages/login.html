@@ -92,17 +92,15 @@
           </div>
         </div>
 
-        <div class="container-fluid col-md-2 col-sm-2 mx-2">
-          <form class="d-flex" role="search">
+        <div class="carrito container-fluid col-md-2 col-sm-2 mx-2">
+          <form class="col d-flex justify-content-center" role="search">
             <button class="btn btn-danger position-relative" type="button" style="border-radius:50%">
               <i class="fa-solid fa-cart-shopping fa-lg" style="color: white"></i>
               <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-primary">10
                 <span class="visually-hidden ">unread messages</span>
             </button>
+            <!-- <button class="logout-button" id="cerrar-sesion">LogOut</button> -->
           </form>
-        </div>
-        <div class="container-fluid col-lg-1 col-md-1 col-sm-1 mx-2">
-          <h4 id="usuario-nav"></h4>
         </div>
       </div>
     </nav>
@@ -138,10 +136,10 @@
         <!-- registro -->
         <form action="" class="formulario__register">
           <h2>Regístrarse</h2>
-          <input type="text" name="nombre" placeholder="Nombre Completo" />
-          <input type="email" name="email" placeholder="Correo Electronico" />
-          <input type="text" name="usuario" placeholder="Usuario" />
-          <input type="password" name="password" placeholder="Contraseña" />
+          <input id="nombre" type="text" name="nombre" placeholder="Nombre Completo" />
+          <input id="email" type="email" name="email" placeholder="Correo Electronico" />
+          <input id="usuario" type="text" name="usuario" placeholder="Usuario" />
+          <input id="password" type="password" name="password" placeholder="Contraseña" />
           <button id="btn-register">Regístrate</button>
 
         </form>
@@ -152,14 +150,13 @@
 
     <section id="usuario-logged" class="contenedor-logout">
       <h2 class="logout-title">Tu Nombre:</h2>
-      <h2 class="logout-text" id="nombre"></h2>
+      <h2 class="logout-text" id="textnombre"></h2>
       <h2 class="logout-title">Tu Usuario:</h2>
-      <h2 class="logout-text" id="usuario"></h2>
+      <h2 class="logout-text" id="textusuario"></h2>
       <h2 class="logout-title">Tu Email:</h2>
-      <h2 class="logout-text" id="email"></h2>
+      <h2 class="logout-text" id="textemail"></h2>
       <h2 class="logout-title">Tu Contraseña:</h2>
-      <h4 type="password" class="logout-text" id="password"></h4>
-      <!-- <h4><a class="logout_shopping-link" href="../pages/carta.html"> Vamos por las Pizzas</a></h4> -->
+      <h4 type="password" class="logout-text " id="textpassword"></h4>
       <button class="logout-button" id="cerrar-sesion">Cerrar Sesion</button>
       <button class="logout_shopping-link"><a href="./carta.html">Ir por todas las Pizzas</a></button>
     </section>
@@ -167,9 +164,10 @@
 
 
   </main>
-
+  
   <script src="../js/login.js"></script>
 </body>
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
   integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 
@@ -178,7 +176,6 @@
 
 <script src="https://kit.fontawesome.com/f5c74ec31b.js" crossorigin="anonymous"></script>
 
-
-<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </html>
