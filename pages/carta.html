@@ -83,10 +83,10 @@
 
             <div class="container-fluid col-md-2 col-sm-2 mx-2">
                <form class="d-flex" role="search">
-                  <button class="btn btn-danger position-relative" type="button" style="border-radius:50%" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">
+                  <button class="btn btn-danger position-relative" type="button" style="border-radius:50%" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
                      <i class="fa-solid fa-cart-shopping fa-lg" style="color: white"></i>
                      <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-primary" id="contadorCarrito">
-                        
+                        0
                         <span class="visually-hidden ">unread messages</span>
                   </button>
                </form>
@@ -299,16 +299,13 @@
       </div>
 
    <!--Offcanvas de carrito--> 
-   
 
-<div class="alert alert-info d-none d-lg-block">Resize your browser to show the responsive offcanvas toggle.</div>
-
-<div class="offcanvas-lg offcanvas-end" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">MIS COMPRAS</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasResponsive" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
+<div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+   <div class="offcanvas-header">
+     <h5 class="offcanvas-title" id="staticBackdropLabel">Offcanvas</h5>
+     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+   </div>
+   <div class="offcanvas-body">
      <table class="table">
      <thead>
        <tr>
@@ -326,12 +323,9 @@
        </tr>
      </tfoot>
    </table>
-
-   
-
    <div class="row" id="cards"></div>
  </div>
-
+<!--template de footer carrito-->
  <template id="template-footer">
      <th scope="row" colspan="2">Total</th>
      <td>10</td>
@@ -344,7 +338,7 @@
      <td class="font-weight-bold">$ <span>5000</span></td>
    
  </template>
- 
+ <!--template de items de carrito-->
  <template id="template-carrito">
    <tr>
      <th scope="row">id</th>

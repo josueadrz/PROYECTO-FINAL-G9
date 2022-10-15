@@ -30,7 +30,8 @@ const agregarCarrito = e =>{
    e.stopPropagation()
 }
 
-//crea objeto producto y copia la informacion de la card y lo guarda
+
+//crea objeto producto con informacion de la card
 const setCarrito = objeto => {
       //console.log(objeto)
       const producto = {
@@ -77,12 +78,15 @@ const renderFooter =()=>{
       `
       return
    }
-
+    
    const nCantidad = Object.values(carrito).reduce((acc,{cantidad})=> acc + cantidad,0)
    //const nPrecio = Object.values(carrito).reduce((acc,{cantidad,precio})=>acc + cantidad * precio,0)
 
    templateFooter.querySelectorAll('td')[0].textContent = nCantidad
    //templateFooter.querySelector('span').textContent = nPrecio
+
+   //actualiza la notificacion del boton
+   contadorCarrito.innerText = nCantidad 
 
    const clone = templateFooter.cloneNode(true)
    fragment.appendChild(clone)
@@ -91,6 +95,7 @@ const renderFooter =()=>{
    const vaciarCarrito = document.getElementById('vaciar-carrito')
    vaciarCarrito.addEventListener('click',()=>{
       carrito = {}
+      contadorCarrito.innerText = 0
       renderCarrito()
    })
 }
@@ -112,6 +117,8 @@ const accionesBtn =e=>{
    }
    e.stopPropagation()
 }
+
+
 
 
 
