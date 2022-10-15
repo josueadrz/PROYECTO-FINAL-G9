@@ -137,7 +137,7 @@
             aria-label="Slide 5"></button>
           <button type="button" data-bs-target="./pages/carta.htmlcarouselExampleControls" data-bs-slide-to="5"
             aria-label="Slide 6"></button>
-          <button type="button" data-bs-target="./pages/carta.htmlcarouselExampleIndicators" data-bs-slide-to="6"
+          <button type="button" data-bs-target="carouselgrande" data-bs-slide-to="6"
             aria-label="Slide 7"></button>
           <button type="button" data-bs-target="./pages/carta.htmlcarouselExampleControls" data-bs-slide-to="7"
             aria-label="Slide 8"></button>
@@ -202,13 +202,13 @@
     
        <div class="cardcarousel-container container-fluid m-0 p-0 ">
          <!--CARRUSEL PARA PANTALLAS GRANDES Y MEDIANAS-->
-         <div id="carouselExampleIndicators" class="carousel carousel-dark slide d-none d-md-block" data-bs-ride="true">
+         <div id="carouselgrande" class="carousel carousel-dark slide d-none d-md-block" data-bs-ride="true">
            <div class="carousel-indicators">
-             <button type="button" data-bs-target="./pages/carta.htmlcarouselExampleIndicators" data-bs-slide-to="0" class="active"
+             <button type="button" data-bs-target="#carouselgrande" data-bs-slide-to="0" class="active"
                aria-current="true" aria-label="Slide 1"></button>
-             <button type="button" data-bs-target="./pages/carta.htmlcarouselExampleIndicators" data-bs-slide-to="1"
+             <button type="button" data-bs-target="#carouselgrande" data-bs-slide-to="1"
                aria-label="Slide 2"></button>
-             <button type="button" data-bs-target="./pages/carta.htmlcarouselExampleIndicators" data-bs-slide-to="2"
+             <button type="button" data-bs-target="#carouselgrande" data-bs-slide-to="2"
                aria-label="Slide 3"></button>
            </div>
            <div class="carousel-inner container">
@@ -349,12 +349,12 @@
            </div>
     
            <!--CONTROLES DE CAROUSEL-->
-           <button class="carousel-control-prev" type="button" data-bs-target="./pages/carta.htmlcarouselExampleIndicators"
+           <button class="carousel-control-prev" type="button" data-bs-target="#carouselgrande"
              data-bs-slide="prev">
              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
              <span class="visually-hidden">Previous</span>
            </button>
-           <button class="carousel-control-next" type="button" data-bs-target="./pages/carta.htmlcarouselExampleIndicators"
+           <button class="carousel-control-next" type="button" data-bs-target="#carouselgrande"
              data-bs-slide="next">
              <span class="carousel-control-next-icon" aria-hidden="true"></span>
              <span class="visually-hidden">Next</span>
@@ -363,7 +363,7 @@
     
     
          <!--CARRUSEL PARA PANTALLAS PEQUENAS-->
-         <div id="carouselExampleCaptionsMobile" class="carousel slide d-md-none" data-bs-ride="false">
+         <div id="carouselChico" class="carousel slide d-md-none" data-bs-ride="false">
     
            <div class="carousel-inner ">
              <!--ITEM 1 DE CAROUSEL PEQUEÑO-->
@@ -478,12 +478,12 @@
              </div>
     
            </div>
-           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptionsMobile"
+           <button class="carousel-control-prev" type="button" data-bs-target="#carouselChico"
              data-bs-slide="prev">
              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
              <span class="visually-hidden">Previous</span>
            </button>
-           <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptionsMobile"
+           <button class="carousel-control-next" type="button" data-bs-target="#carouselChico"
              data-bs-slide="next">
              <span class="carousel-control-next-icon" aria-hidden="true"></span>
              <span class="visually-hidden">Next</span>
@@ -599,10 +599,10 @@
   </footer>
 
 
-
+<script src="./js/carrito.js"></script>
 </body>
 
-<!-- <script src="../js/login.js"></script> -->
+<script src="../js/login.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
   integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
