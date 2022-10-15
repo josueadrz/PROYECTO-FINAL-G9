@@ -22,7 +22,7 @@ tarjetas.addEventListener('click', e=>{
 items.addEventListener('click',e=>{
    accionesBtn(e)
 })
-//Añadir item a carrito
+//Añadir item a carrito, trigger de captura de tarjeta
 const agregarCarrito = e =>{  
    if(e.target.classList.contains('agregarCarrito')){     
       setCarrito(e.target.closest('.card'))
@@ -30,36 +30,39 @@ const agregarCarrito = e =>{
    e.stopPropagation()
 }
 
-
 //crea objeto producto con informacion de la card
-const setCarrito = objeto => {     
-      const producto = {
+const setCarrito = objeto => { 
+    
+         const producto = {
          id: objeto.querySelector('.agregarCarrito').dataset.id,
          title: objeto.querySelector('.card-title').textContent,
-         //size:objeto.querySelector('option[selected] .size').textContent,
-         //precio:objeto.querySelector('.precio').textContent,
-         cantidad:1,
+         //size: objeto.querySelector('.form-select').dataset.size,
+         precio: objeto.querySelector('.form-select').value,
+         cantidad: 1,
          imagen:objeto.querySelector('.card-img-top').src
       }
-
+      
       if(carrito.hasOwnProperty(producto.id)){
          producto.cantidad = carrito[producto.id].cantidad + 1
-      }
+     }
 
       carrito[producto.id] = {...producto}
       renderCarrito()
 }
 //pinta los productos en el template del carrito
-const renderCarrito = () =>{   
+const renderCarrito = () =>{  
+ 
+   
    items.innerHTML=''
    Object.values(carrito).forEach(producto =>{
       templateCarrito.querySelector('img').src = producto.imagen
       templateCarrito.querySelectorAll('td')[0].textContent = producto.title
       templateCarrito.querySelectorAll('td')[2].textContent = producto.cantidad
-      templateCarrito.querySelectorAll('td')[1].textContent = producto.size
+      //templateCarrito.querySelectorAll('td')[1].textContent = producto.size
+      //templateCarrito.querySelectorAll('td')[3].textContent = 
       templateCarrito.getElementById('botonMas').dataset.id = producto.id
       templateCarrito.getElementById('botonMenos').dataset.id = producto.id
-      //templateCarrito.querySelector('span').textContent = producto.cantidad * producto.precio
+      templateCarrito.querySelector('span').textContent = producto.cantidad * producto.precio
       const clone = templateCarrito.cloneNode(true)
       fragment.appendChild(clone)
    })
@@ -69,7 +72,7 @@ const renderCarrito = () =>{
 
    localStorage.setItem('carrito',JSON.stringify(carrito))
 }
-//pinta totales
+//pinta los totales
 const renderFooter =()=>{
    footer.innerHTML =''
    contadorCarrito.innerHTML =''
@@ -81,18 +84,19 @@ const renderFooter =()=>{
    }
     
    const nCantidad = Object.values(carrito).reduce((acc,{cantidad})=> acc + cantidad,0)
-   //const nPrecio = Object.values(carrito).reduce((acc,{cantidad,precio})=>acc + cantidad * precio,0)
+   const nPrecio = Object.values(carrito).reduce((acc,{cantidad,precio})=>acc + cantidad * precio,0)
 
    templateFooter.querySelectorAll('td')[1].textContent = nCantidad
-   //templateFooter.querySelector('span').textContent = nPrecio
+   templateFooter.querySelector('span').textContent = nPrecio
 
    //actualiza la notificacion del boton
    contadorCarrito.innerText = nCantidad 
-
+   //para dibujar el footer del carrito
    const clone = templateFooter.cloneNode(true)
    fragment.appendChild(clone)
    footer.appendChild(fragment)
 
+   //vaciar carrito
    const vaciarCarrito = document.getElementById('vaciar-carrito')
    vaciarCarrito.addEventListener('click',()=>{
       carrito = {}
