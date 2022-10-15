@@ -1,118 +1,100 @@
-const cards = document.getElementById('cards')
-const items = document.getElementById('items')
-const footer = document.getElementById('footer')
-const templateCard = document.getElementById('template-card').content
-const templateFooter = document.getElementById('template-footer').content
-const templateCarrito = document.getElementById('template-carrito').content
-const fragment = document.createDocumentFragment()
-let carrito = {}
+const boton = document.querySelectorAll('.card button')
+const contenedorCarrito = document.getElementById('carrito-contenedor')
+const botonVaciar = document.getElementById('vaciar-carrito')
+const contadorCarrito = document.getElementById('contadorCarrito')
+const cantidad = document.getElementById('cantidad')
+const precioTotal = document.getElementById('precioTotal')
+const cantidadTotal = document.getElementById('cantidadTotal')
+let carrito = []
 
-// Eventos
-// El evento DOMContentLoaded es disparado cuando el documento HTML ha sido completamente cargado y parseado
-document.addEventListener('DOMContentLoaded', e => { fetchData() });
-cards.addEventListener('click', e => { addCarrito(e) });
-items.addEventListener('click', e => { btnAumentarDisminuir(e) })
-
-
-
-// Agregar al carrito
-const addCarrito = e => {
-    if (e.target.classList.contains('btn-dark')) {
-        // console.log(e.target.dataset.id)
-        // console.log(e.target.parentElement)
-        setCarrito(e.target.parentElement)
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('carrito')){
+        carrito = JSON.parse(localStorage.getItem('carrito'))
+        actualizarCarrito()
     }
-    e.stopPropagation()
-}
+})
 
-const setCarrito = item => {
-    // console.log(item)
-    const producto = {
-        title: item.querySelector('h5').textContent,
-        precio: item.querySelector('p').textContent,
-        id: item.querySelector('button').dataset.id,
-        cantidad: 1
-    }
-    // console.log(producto)
-    if (carrito.hasOwnProperty(producto.id)) {
-        producto.cantidad = carrito[producto.id].cantidad + 1
-    }
+botonVaciar.addEventListener('click', () => {
+    carrito.length = 0
+    actualizarCarrito()
+})
 
-    carrito[producto.id] = { ...producto }
     
-    pintarCarrito()
-}
-
-const pintarCarrito = () => {
-    items.innerHTML = ''
-
-    Object.values(carrito).forEach(producto => {
-        templateCarrito.querySelector('th').textContent = producto.id
-        templateCarrito.querySelectorAll('td')[0].textContent = producto.title
-        templateCarrito.querySelectorAll('td')[1].textContent = producto.cantidad
-        templateCarrito.querySelector('span').textContent = producto.precio * producto.cantidad
-        
-        //botones
-        templateCarrito.querySelector('.btn-info').dataset.id = producto.id
-        templateCarrito.querySelector('.btn-danger').dataset.id = producto.id
-
-        const clone = templateCarrito.cloneNode(true)
-        fragment.appendChild(clone)
-    })
-    items.appendChild(fragment)
-
-    pintarFooter()
-}
-
-const pintarFooter = () => {
-    footer.innerHTML = ''
     
-    if (Object.keys(carrito).length === 0) {
-        footer.innerHTML = `
-        <th scope="row" colspan="5">Carrito vacío con innerHTML</th>
-        `
-        return
-    }
-    
-    // sumar cantidad y sumar totales
-    const nCantidad = Object.values(carrito).reduce((acc, { cantidad }) => acc + cantidad, 0)
-    const nPrecio = Object.values(carrito).reduce((acc, {cantidad, precio}) => acc + cantidad * precio ,0)
-    // console.log(nPrecio)
-
-    templateFooter.querySelectorAll('td')[0].textContent = nCantidad
-    templateFooter.querySelector('span').textContent = nPrecio
-
-    const clone = templateFooter.cloneNode(true)
-    fragment.appendChild(clone)
-
-    footer.appendChild(fragment)
-
-    const boton = document.querySelector('#vaciar-carrito')
     boton.addEventListener('click', () => {
-        carrito = {}
-        pintarCarrito()
+        //esta funcion ejecuta el agregar el carrito con la id del producto
+        agregarAlCarrito(producto.id)
+        //
     })
 
+
+
+//AGREGAR AL CARRITO
+const agregarAlCarrito = (prodId) => {
+
+    //PARA AUMENTAR LA CANTIDAD Y QUE NO SE REPITA
+    const existe = carrito.some (prod => prod.id === prodId) //comprobar si el elemento ya existe en el carro
+
+    if (existe){ //SI YA ESTÁ EN EL CARRITO, ACTUALIZAMOS LA CANTIDAD
+        const prod = carrito.map (prod => { //creamos un nuevo arreglo e iteramos sobre cada curso y cuando
+            // map encuentre cual es el q igual al que está agregado, le suma la cantidad
+            if (prod.id === prodId){
+                prod.cantidad++
+            }
+        })
+    } else { 
+        const item = stockProductos.find((prod) => prod.id === prodId)//Trabajamos con las ID
+        //Una vez obtenida la ID, lo que haremos es hacerle un push para agregarlo al carrito
+        carrito.push(item)
+    }
+    //Va a buscar el item, agregarlo al carrito y llama a la funcion actualizarCarrito, que recorre
+    //el carrito y se ve.
+    actualizarCarrito() //LLAMAMOS A LA FUNCION QUE CREAMOS EN EL TERCER PASO. CADA VEZ Q SE 
+    //MODIFICA EL CARRITO
 }
 
-const btnAumentarDisminuir = e => {
-    // console.log(e.target.classList.contains('btn-info'))
-    if (e.target.classList.contains('btn-info')) {
-        const producto = carrito[e.target.dataset.id]
-        producto.cantidad++
-        carrito[e.target.dataset.id] = { ...producto }
-        pintarCarrito()
-    }
+const eliminarDelCarrito = (prodId) => {
+    const item = carrito.find((prod) => prod.id === prodId)
 
-    if (e.target.classList.contains('btn-danger')) {
-        const producto = carrito[e.target.dataset.id]
-        producto.cantidad--
-        if (producto.cantidad === 0) {
-            delete carrito[e.target.dataset.id]
-        } else {
-            carrito[e.target.dataset.id] = {...producto}
-        }
-        pintarCarrito()
-    }
-    e.stopPropagation()
+    const indice = carrito.indexOf(item) //Busca el elemento q yo le pase y nos devuelve su indice.
+
+    carrito.splice(indice, 1) //Le pasamos el indice de mi elemento ITEM y borramos 
+    // un elemento 
+    actualizarCarrito() //LLAMAMOS A LA FUNCION QUE CREAMOS EN EL TERCER PASO. CADA VEZ Q SE 
+    //MODIFICA EL CARRITO
+    console.log(carrito)
+}
+
+const actualizarCarrito = () => {
+    //4- CUARTO PASO
+    //LOS APPENDS SE VAN ACUMULANDO CON LO QE HABIA ANTES
+    contenedorCarrito.innerHTML = "" //Cada vez que yo llame a actualizarCarrito, lo primero q hago
+    //es borrar el nodo. Y despues recorro el array lo actualizo de nuevo y lo rellena con la info
+    //actualizado
+    //3 - TERCER PASO. AGREGAR AL MODAL. Recorremos sobre el array de carrito.
+
+    //Por cada producto creamos un div con esta estructura y le hacemos un append al contenedorCarrito (el modal)
+    carrito.forEach((prod) => {
+        const div = document.createElement('div')
+        div.className = ('productoEnCarrito')
+        div.innerHTML = `
+        <p>${prod.nombre}</p>
+        <p>Precio:$${prod.precio}</p>
+        <p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p>
+        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+        `
+
+        contenedorCarrito.appendChild(div)
+        
+        localStorage.setItem('carrito', JSON.stringify(carrito))
+
+    })
+    //SEPTIMO PASO
+    contadorCarrito.innerText = carrito.length // actualizamos con la longitud del carrito.
+    //OCTAVO PASO
+    console.log(carrito)
+    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
+    //Por cada producto q recorro en mi carrito, al acumulador le suma la propiedad precio, con el acumulador
+    //empezando en 0.
+
 }
